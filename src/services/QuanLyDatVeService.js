@@ -1,0 +1,22 @@
+import { baseService } from "./baseService";
+import { GROUPID } from "../ulti/settings/config";
+import { ThongTinDatVe } from "../_core/models/ThongTinDatVe";
+
+export class QuanLyDatVeService extends baseService {
+  constructor() {
+    super();
+  }
+  layChiTietPhongVe = (maLichChieu) => {
+    //ma lich chieu lay tu url
+    return this.get(
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+    );
+  };
+  datVe = (thongTinDatVe = new ThongTinDatVe()) => {
+    return this.post(`/api/QuanLyDatVe/DatVe`, thongTinDatVe);
+  };
+taoLichChieu = (thongTinLichChieu) => {
+    return this.post(`/api/QuanLyDatVe/TaoLichChieu`,thongTinLichChieu);
+}
+}
+export const quanLyDatVeService = new QuanLyDatVeService();
